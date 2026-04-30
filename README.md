@@ -1,70 +1,128 @@
-# Getting Started with Create React App
+# 🧩 React Kanban Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive Kanban-style dashboard built with React, featuring dynamic card resizing, responsive grid layout, and smooth UI interactions.
 
-## Available Scripts
+---
+## 📸 Screenshots
 
-In the project directory, you can run:
+<img width="1891" height="866" alt="image" src="https://github.com/user-attachments/assets/073cfd30-1284-4290-8932-a0fe78cbf298" />
+<img width="558" height="748" alt="image" src="https://github.com/user-attachments/assets/f028ea9b-564a-4809-96de-9685cb5e7093" />
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🔗 Live Demo
+👉 https://dashboard-ui-virid-three.vercel.app/
 
-### `npm test`
+## 📂 GitHub Repo
+👉 https://github.com/akankshapatil2015/dashboard-ui
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## ✨ Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 📊 **Kanban Board Layout**
+  - Multiple columns with structured task grouping
+  - Clean and modern UI inspired by real productivity tools
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 📦 **Dynamic Card Resizing**
+  - Resize cards using ➕ / ➖ controls
+  - Min / Max constraints applied
+  - Smooth animated transitions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 📐 **Responsive Grid System**
+  - Adapts from 3-column → 2-column → 1-column layout
+  - Works seamlessly across desktop, tablet, and mobile
 
-### `npm run eject`
+- 🎯 **Interactive UI Elements**
+  - Filter, Sort, and View controls (UI level)
+  - Avatar groups and status indicators
+  - Tabs navigation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- ⚡ **Performance & UX Enhancements**
+  - Smooth resize animations
+  - Optimized rendering
+  - Mobile-friendly interactions (resize disabled on small screens)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🛠️ Tech Stack
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **React.js**
+- **JavaScript (ES6+)**
+- **CSS3 (Flexbox + Grid + Media Queries)**
+- **React Icons**
+- **Vercel (Deployment)**
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🧠 Key Implementation Details
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 🔹 Card Resizing Logic
+- Managed using React `useState`
+- Controlled width & height with min/max constraints
+- Buttons disabled at limits to prevent overflow
 
-### Code Splitting
+### 🔹 Responsive Design
+- CSS Grid with adaptive breakpoints
+- Mobile-first optimizations
+- Sidebar + layout adjustments for smaller screens
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 🔹 Smooth Animations
+- CSS transitions with cubic-bezier easing
+- Subtle scaling effect during resizing
+- Improved perceived performance
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📁 Project Structure
+src/
+│
+├── components/
+│ ├── Board/
+│ ├── Column/
+│ ├── Card/
+│ ├── Sidebar/
+│ └── Topbar/
+│
+├── data/
+│ ├── columnsData.js
+│ └── avatarData.js
+│
+├── App.jsx
+└── main.jsx
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🚧 Future Improvements
 
-### Advanced Configuration
+- Drag & drop cards (like Trello)
+- Persist card size using localStorage
+- Real filtering & sorting functionality
+- Framer Motion animations
+- Backend integration for real data
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 💡 What I Learned
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Managing UI state for dynamic layouts
+- Building responsive dashboards from scratch
+- Improving UX with micro-interactions and animations
+- Handling edge cases in resizing logic
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 👩‍💻 Author
+
+**Akanksha Patil**  
+Frontend Developer  
+
+- Portfolio: https://personal-portfolio-blush-mu.vercel.app/
+- LinkedIn: https://www.linkedin.com/in/akankshapatil2015/
+
+---
+
+## ⭐ Feedback
+
+I’d love to hear your feedback!  
+Feel free to suggest improvements or enhancements.
