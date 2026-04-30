@@ -123,7 +123,7 @@ function Board() {
 
       const nextWidth = Math.min(
         Math.max(startWidth + (event.clientX - startX), MIN_COLUMN_WIDTH),
-        MAX_COLUMN_WIDTH
+        MAX_COLUMN_WIDTH,
       );
 
       setColumnWidths((prev) => ({
@@ -131,7 +131,7 @@ function Board() {
         [columnId]: nextWidth,
       }));
     },
-    [MAX_COLUMN_WIDTH, MIN_COLUMN_WIDTH]
+    [MAX_COLUMN_WIDTH, MIN_COLUMN_WIDTH],
   );
 
   const stopColumnResize = useCallback(() => {

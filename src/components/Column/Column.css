@@ -43,6 +43,20 @@
   padding: 9px;
 }
 
+.column-empty {
+  border: 1px dashed #94a3b8;
+}
+
+.empty-column-drop-text {
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px dashed #94a3b8;
+  border-radius: 8px;
+  color: #64748b;
+  text-align: center;
+  font-size: 12px;
+}
+
 .column-resize-handle {
   position: absolute;
   top: 0;

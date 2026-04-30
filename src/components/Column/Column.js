@@ -13,7 +13,9 @@ function Column({ column, isActive, width, minWidth, onColumnResizeStart }) {
 
   return (
     <div
-      className={`column ${isActive ? 'column-active' : ''}`}
+      className={`column ${isActive ? 'column-active' : ''} ${
+        column.cards.length === 0 ? 'column-empty' : ''
+      }`}
       ref={setNodeRef}
       style={{
         width: width || minWidth,
@@ -32,6 +34,9 @@ function Column({ column, isActive, width, minWidth, onColumnResizeStart }) {
           <Card key={card.id} card={card} columnWidth={width || minWidth} />
         ))}
       </SortableContext>
+      {column.cards.length === 0 ? (
+        <p className='empty-column-drop-text'>Drop here</p>
+      ) : null}
 
       <button className='add-task'>+ Add Task</button>
       <button
