@@ -60,6 +60,7 @@
 .task-card h5 {
   margin: 10px 0 6px;
   font-size: 20px;
+  font-weight: 600;
 }
 
 .task-card p {
@@ -144,7 +145,7 @@
   }
 
   .task-card h5 {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 

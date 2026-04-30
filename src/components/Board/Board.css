@@ -173,6 +173,7 @@
 @media (max-width: 1024px) {
   .kanban {
     overflow-x: auto;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
