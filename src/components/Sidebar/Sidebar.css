@@ -1,0 +1,159 @@
+.sidebar {
+  background: #0f1117;
+  color: #f4f6ff;
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 84px);
+  transition: width 0.25s ease;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+}
+
+.add-btn {
+  border: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #5dff55;
+  font-weight: 800;
+}
+
+.toggle-btn {
+  border: 1px solid #2b3343;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #1a2130;
+  color: #d9deeb;
+  cursor: pointer;
+}
+
+.sidebar.collapsed {
+  padding: 16px 10px;
+  align-items: center;
+}
+
+.sidebar.collapsed .sidebar-header {
+  width: 100%;
+  justify-content: center;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 12px 0;
+  margin: 0;
+}
+
+.sidebar-list li {
+  padding: 10px 2px;
+  color: #b9bec9;
+  font-size: 15px;
+  border-bottom: 1px solid #1f2330;
+}
+
+.project-groups {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.group-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #d5dae3;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dot.green {
+  background: #6cff79;
+}
+
+.dot.gray {
+  background: #9ea5b5;
+}
+
+.pill {
+  margin-left: auto;
+  background: #1f2634;
+  color: #d8deec;
+  border-radius: 30px;
+  font-size: 12px;
+  padding: 3px 8px;
+}
+
+.upgrade-card {
+  margin-top: auto;
+  background: #151a22;
+  border: 1px solid #242d3d;
+  border-radius: 16px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.trophy {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #6cff43;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upgrade-card h3 {
+  margin: 12px 0 6px;
+}
+
+.upgrade-card p {
+  margin: 0;
+  color: #a4adbe;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1300px) {
+  .sidebar {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    top: 64px;
+    height: calc(100vh - 64px);
+    width: 240px;
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+}

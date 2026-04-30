@@ -1,0 +1,156 @@
+.task-card {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 14px;
+  padding: 12px;
+  position: relative;
+  transition: width 0.3s ease, height 0.3s ease;
+  overflow: hidden;
+  transform-origin: top left;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  background: #eef4fd;
+  color: #57677d;
+  border-radius: 20px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.tag.level {
+  background: #f8f4da;
+}
+
+.tag.date {
+  background: #f1f1f1;
+}
+
+.task-card h5 {
+  margin: 10px 0 6px;
+  font-size: 27px;
+}
+
+.task-card p {
+  margin: 0;
+  color: #7b8392;
+  font-size: 13px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cover-image {
+  margin-top: 10px;
+  height: 88px;
+  border-radius: 10px;
+  background: linear-gradient(110deg, #240018, #7a0015, #0f1a4f);
+}
+
+.card-footer {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-footer small {
+  color: #9299a8;
+  font-size: 11px;
+}
+
+.avatar.tiny {
+  width: 22px;
+  height: 22px;
+  font-size: 10px;
+  margin-left: -6px;
+}
+
+.resize-controls {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+.resize-controls button {
+  border: none;
+  background: #f1f5f9;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resize-controls button:hover {
+  background: #e2e8f0;
+}
+
+.resize-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .task-card {
+    padding: 10px;
+  }
+
+  .task-card h5 {
+    font-size: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .task-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .task-card h5 {
+    font-size: 16px;
+  }
+
+  .task-card p {
+    font-size: 12px;
+  }
+
+  .resize-controls {
+    top: 6px;
+    right: 6px;
+  }
+
+  .resize-controls {
+    display: none;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .tag {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  .avatar.tiny {
+    width: 18px;
+    height: 18px;
+    font-size: 9px;
+  }
+}

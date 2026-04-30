@@ -1,0 +1,40 @@
+.column {
+  background: #f3f3f3;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 280px;
+}
+
+.column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.column-header h4 {
+  margin: 0;
+}
+
+.column-header span {
+  background: #e6e6e6;
+  border-radius: 20px;
+  padding: 2px 8px;
+  font-size: 12px;
+}
+
+.add-task {
+  border: 1px solid #dfdfdf;
+  background: #fff;
+  border-radius: 8px;
+  padding: 9px;
+}
+
+@media (max-width: 768px) {
+  .column {
+    min-width: 100%;
+  }
+}
