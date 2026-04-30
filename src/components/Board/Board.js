@@ -91,7 +91,6 @@ function Board() {
     }
 
     setData(newData);
-    console.log('OVER:', over?.id);
   };
 
   const handleDragOver = (event) => {

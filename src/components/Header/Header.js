@@ -14,6 +14,17 @@ function Header() {
     <header className='topbar'>
       <nav className='top-nav'>
         <div className='brand'>ClickUp</div>
+        <select
+          className='mobile-nav-dropdown'
+          defaultValue='Projects'
+          aria-label='Select section'
+        >
+          {navItems.map((item) => (
+            <option key={item.label} value={item.label}>
+              {item.label}
+            </option>
+          ))}
+        </select>
 
         {navItems.map((item) => (
           <button
