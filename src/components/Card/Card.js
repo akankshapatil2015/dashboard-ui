@@ -1,48 +1,99 @@
-import { useState, useEffect } from 'react';
-import { FiPlus, FiMinus } from 'react-icons/fi';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import './Card.css';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
-function Card({ card }) {
+function Card({ card, columnWidth }) {
   const [size, setSize] = useState({
     width: 260,
     height: 200,
   });
 
-const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-const [isResizing, setIsResizing] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isResizing, setIsResizing] = useState(false);
+  const cardRef = useRef(null);
+  const resizeStartRef = useRef({
+    mouseX: 0,
+    mouseY: 0,
+    width: 260,
+    height: 200,
+  });
 
-useEffect(() => {
-  const handleResize = () => setIsMobile(window.innerWidth < 768);
-  window.addEventListener('resize', handleResize);
-  return () => window.removeEventListener('resize', handleResize);
-}, []);
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: card.id });
 
-const MAX_WIDTH = isMobile ? 320 : 400;
-const MAX_HEIGHT = isMobile ? 260 : 300;
-const MIN_WIDTH = isMobile ? 200 : 220;
-const MIN_HEIGHT = 140;
+  const columnBasedMaxWidth = Math.max((columnWidth || 260) - 30, 180);
+  const MAX_WIDTH = isMobile
+    ? Math.min(columnBasedMaxWidth, 320)
+    : columnBasedMaxWidth;
+  const MAX_HEIGHT = isMobile ? 260 : 300;
+  const MIN_WIDTH = Math.max(
+    isMobile ? 170 : 200,
+    Math.min(isMobile ? 200 : 220, MAX_WIDTH - 30),
+  );
+  const MIN_HEIGHT = 140;
 
-const increaseSize = () => {
-  setIsResizing(true);
+  const handleResizeMove = useCallback(
+    (event) => {
+      const { mouseX, mouseY, width, height } = resizeStartRef.current;
+      const deltaX = event.clientX - mouseX;
+      const deltaY = event.clientY - mouseY;
 
-  setSize((prev) => ({
-    width: Math.min(prev.width + 20, MAX_WIDTH),
-    height: Math.min(prev.height + 20, MAX_HEIGHT),
-  }));
+      setSize({
+        width: Math.min(Math.max(width + deltaX, MIN_WIDTH), MAX_WIDTH),
+        height: Math.min(Math.max(height + deltaY, MIN_HEIGHT), MAX_HEIGHT),
+      });
+    },
+    [MAX_HEIGHT, MAX_WIDTH, MIN_HEIGHT, MIN_WIDTH],
+  );
 
-  setTimeout(() => setIsResizing(false), 150);
-};
+  const stopResize = useCallback(() => {
+    setIsResizing(false);
+    window.removeEventListener('mousemove', handleResizeMove);
+    window.removeEventListener('mouseup', stopResize);
+  }, [handleResizeMove]);
 
-const decreaseSize = () => {
-  setIsResizing(true);
+  const startResize = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
 
-  setSize((prev) => ({
-    width: Math.max(prev.width - 20, MIN_WIDTH),
-    height: Math.max(prev.height - 20, MIN_HEIGHT),
-  }));
+    resizeStartRef.current = {
+      mouseX: event.clientX,
+      mouseY: event.clientY,
+      width: cardRef.current?.offsetWidth || size.width,
+      height: cardRef.current?.offsetHeight || size.height,
+    };
 
-  setTimeout(() => setIsResizing(false), 150);
-};
+    setIsResizing(true);
+    window.addEventListener('mousemove', handleResizeMove);
+    window.addEventListener('mouseup', stopResize);
+  };
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      window.removeEventListener('mousemove', handleResizeMove);
+      window.removeEventListener('mouseup', stopResize);
+    };
+  }, [handleResizeMove, stopResize]);
+
+  useEffect(() => {
+    setSize((prev) => ({
+      width: Math.min(Math.max(prev.width, MIN_WIDTH), MAX_WIDTH),
+      height: Math.min(Math.max(prev.height, MIN_HEIGHT), MAX_HEIGHT),
+    }));
+  }, [MAX_HEIGHT, MAX_WIDTH, MIN_HEIGHT, MIN_WIDTH]);
 
   return (
     <article
@@ -50,23 +101,24 @@ const decreaseSize = () => {
       style={{
         width: size.width,
         height: size.height,
+        transform: CSS.Transform.toString(transform),
+        transition,
+        opacity: isDragging ? 0.3 : 1,
+      }}
+      ref={(node) => {
+        setNodeRef(node);
+        cardRef.current = node;
       }}
     >
-      {/* Resize Controls */}
-      <div className='resize-controls'>
-        <button
-          onClick={decreaseSize}
-          disabled={size.width <= MIN_WIDTH || size.height <= MIN_HEIGHT}
-        >
-          <FiMinus />
-        </button>
-        <button
-          onClick={increaseSize}
-          disabled={size.width >= MAX_WIDTH || size.height >= MAX_HEIGHT}
-        >
-          <FiPlus />
-        </button>
-      </div>
+      <button
+        type='button'
+        className='card-drag-handle'
+        aria-label='Drag card'
+        {...attributes}
+        {...listeners}
+      >
+        <span className='card-drag-icon' aria-hidden='true' />
+      </button>
       <div className='tag-row'>
         <span className='tag'>{card.tags[0]}</span>
         <span className='tag level'>{card.tags[1]}</span>
@@ -85,6 +137,12 @@ const decreaseSize = () => {
         </div>
         <small>{card.stats}</small>
       </div>
+      <button
+        type='button'
+        className='resize-handle'
+        aria-label='Resize card'
+        onMouseDown={startResize}
+      />
     </article>
   );
 }

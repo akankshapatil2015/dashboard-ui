@@ -14,7 +14,7 @@
   width: 100%;
   break-inside: avoid;
   margin-bottom: 16px;
-   will-change: width, height, transform;
+  will-change: width, height, transform;
 }
 
 .task-card.resizing {
@@ -97,32 +97,44 @@
   margin-left: -6px;
 }
 
-.resize-controls {
+.card-drag-handle {
   position: absolute;
-  top: 8px;
+  top: 10px;
   right: 8px;
-  display: flex;
-  gap: 4px;
-}
-
-.resize-controls button {
-  border: none;
-  background: #f1f5f9;
-  border-radius: 6px;
-  cursor: pointer;
-  padding: 4px;
+  width: 26px;
+  height: 26px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: grab;
 }
 
-.resize-controls button:hover {
-  background: #e2e8f0;
+.card-drag-handle:active {
+  cursor: grabbing;
 }
 
-.resize-controls button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.card-drag-icon {
+  width: 10px;
+  height: 10px;
+  background-image: radial-gradient(circle, #64748b 1px, transparent 1px);
+  background-size: 5px 5px;
+  background-position: 0 0;
+}
+
+.resize-handle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  right: 2px;
+  bottom: 2px;
+  border: none;
+  padding: 0;
+  background: linear-gradient(135deg, transparent 50%, #94a3b8 50%);
+  cursor: nwse-resize;
 }
 
 /* Tablet */
@@ -152,12 +164,12 @@
     font-size: 12px;
   }
 
-  .resize-controls {
+  .card-drag-handle {
     top: 6px;
     right: 6px;
   }
 
-  .resize-controls {
+  .resize-handle {
     display: none;
   }
 }

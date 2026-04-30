@@ -1,9 +1,11 @@
 const columns = [
   {
+    id: 'todo',
     title: 'To Do',
     count: 3,
     cards: [
       {
+        id: 'col-1-1',
         tags: ['Dev', 'Medium', 'Sep 12 - 16'],
         title: 'Web Development',
         description:
@@ -12,6 +14,7 @@ const columns = [
         avatars: 2,
       },
       {
+        id: 'col-1-2',
         tags: ['UI/UX', 'High', 'Sep 12 - 16'],
         title: 'UI/UX Designing',
         description:
@@ -21,6 +24,7 @@ const columns = [
         cover: true,
       },
       {
+        id: 'col-1-3',
         tags: ['Dev', 'Medium', 'Sep 12 - 16'],
         title: 'Mobile App Development',
         description:
@@ -31,10 +35,12 @@ const columns = [
     ],
   },
   {
+    id: 'inprogress',
     title: 'In Progress',
     count: 2,
     cards: [
       {
+        id: 'col-2-1',
         tags: ['Marketing', 'Medium', 'Sep 12 - 16'],
         title: 'Inhouse Marketing',
         description:
@@ -43,6 +49,7 @@ const columns = [
         avatars: 3,
       },
       {
+        id: 'col-2-2',
         tags: ['Branding', 'Low', 'Sep 12 - 16'],
         title: 'PPC Marketing',
         description:
@@ -53,10 +60,12 @@ const columns = [
     ],
   },
   {
+    id: 'review',
     title: 'Review',
     count: 2,
     cards: [
       {
+        id: 'col-3-1',
         tags: ['Client Work', 'Low', 'Sep 12 - 16'],
         title: 'Website Design',
         description:
@@ -65,6 +74,7 @@ const columns = [
         avatars: 2,
       },
       {
+        id: 'col-3-2',
         tags: ['Marketing', 'Medium', 'Sep 12 - 16'],
         title: 'Social Media Marketing',
         description:
