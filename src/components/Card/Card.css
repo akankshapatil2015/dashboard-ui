@@ -4,9 +4,30 @@
   border-radius: 14px;
   padding: 12px;
   position: relative;
-  transition: width 0.3s ease, height 0.3s ease;
+ transition: 
+    width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
   overflow: hidden;
   transform-origin: top left;
+  width: 100%;
+  break-inside: avoid;
+  margin-bottom: 16px;
+   will-change: width, height, transform;
+}
+
+.task-card.resizing {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.task-card * {
+  transition: opacity 0.2s ease;
+}
+
+.task-card.resizing * {
+  opacity: 0.85;
 }
 
 .task-card:hover {
